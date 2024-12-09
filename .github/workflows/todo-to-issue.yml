@@ -3,7 +3,7 @@ name: Create Issues from TODO Comments
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types: [opened, synchronize]
 
