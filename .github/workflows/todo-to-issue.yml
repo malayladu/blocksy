@@ -17,7 +17,6 @@ jobs:
       - name: Run TODO to Issue Action
         uses: alstr/todo-to-issue-action@v5.1.7
         with:
-          PROJECTS_SECRET: ${{ secrets.GITHUB_TOKEN }}
-          IDENTIFIERS: [{"name": "TODO", "labels": []}]          
+          PROJECTS_SECRET: ${{ secrets.GITHUB_TOKEN }}       
           AUTO_ASSIGN: 'malayladu'
           IGNORE: 'vendor/.*,node_modules/.*'                
