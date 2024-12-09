@@ -3,7 +3,7 @@ name: Create Issues from TODO Comments
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types: [opened, synchronize]
 
@@ -17,11 +17,6 @@ jobs:
       - name: Run TODO to Issue Action
         uses: alstr/todo-to-issue-action@v5.1.7
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          todo-keyword: "@TODO:" 
-          file-glob: |
-            **/*.php
-            !vendor/**
-            !node_modules
-          labels: "todo, automation"
-          remove-todo: false # Set to true if you want to remove TODO comments after creating issues
+          PROJECTS_SECRET: ${{ secrets.GITHUB_TOKEN }}       
+          AUTO_ASSIGN: 'malayladu'
+          IGNORE: 'vendor/.*,node_modules/.*'                
