@@ -1,0 +1,22 @@
+name: Validate Plugin Readme
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+  pull_request:
+
+jobs:
+  validate-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Validate Plugin Readme
+        uses: miziomon/wordpress-plugin-readme-validator@v1
+        with:
+          readme: readme.txt
