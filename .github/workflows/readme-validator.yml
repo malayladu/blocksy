@@ -16,7 +16,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Validate Plugin Readme
-        uses: miziomon/wordpress-plugin-readme-validator@v1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          readme: readme.txt
+          php-version: '8.0'
+
+      - name: Install WP-CLI
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
+
+      - name: Validate Plugin Readme
+        run: wp plugin verify-readme readme.txt || exit 1
