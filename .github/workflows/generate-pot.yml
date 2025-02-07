@@ -34,6 +34,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add languages/your-plugin.pot
+          git add languages/blocksy.pot
           git commit -m "Update translation POT file" || echo "No changes to commit"
           git push
