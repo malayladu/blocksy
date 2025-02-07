@@ -8,6 +8,6 @@ class MathTest extends TestCase {
 	}
 
 	public function test_subtraction() {
-		$this->assertEquals(2, 5 - 3);
+		$this->assertEquals(1, 5 - 3);
 	}
 }
