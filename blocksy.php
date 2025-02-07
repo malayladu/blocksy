@@ -11,11 +11,31 @@
  * License: GPL2
  */
 
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
 
-load_plugin_textdomain(
-	'blocksy',
-	false,
-	dirname( dirname( \plugin_basename( __FILE__ ) ) ) . '/languages/'
-);
+class Simple_Plugin {
+	public function __construct() {
+		add_action('admin_notices', [$this, 'display_admin_notice']);
+
+
+		load_plugin_textdomain(
+			'blocksy',
+			false,
+			'/languages/'
+		);
+	}
+
+	public function display_admin_notice() {
+		echo '<div class="notice notice-success is-dismissible">';
+		echo '<p>' . esc_html__('Hello! This is a simple plugin admin notice.', 'simple-plugin') . '</p>';
+		echo '</div>';
+	}
+}
+
+new Simple_Plugin();
+
+
 
 
