@@ -1,0 +1,22 @@
+name: PHPUnit Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup WordPress Environment
+        uses: WordPress/phpunit@v1
+        with:
+          wordpress-version: '6.3' # Specify the WordPress version
+          php-version: '8.0'      # Specify PHP version
+      - run: composer install
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit
