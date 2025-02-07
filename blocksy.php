@@ -19,6 +19,11 @@ class Simple_Plugin {
 	public function __construct() {
 		add_action('admin_notices', [$this, 'display_admin_notice']);
 
+		$strings = [
+			__('Hello', 'blocksy'),
+			__('World', 'blocksy'),
+			__('How are you?', 'blocksy'),
+		];
 
 		load_plugin_textdomain(
 			'blocksy',
