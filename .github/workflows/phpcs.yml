@@ -1,18 +1,31 @@
-name: PHP Code Quality
+name: PHP Code Sniffer
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
 
 jobs:
   phpcs:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup PHP
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
-          tools: phpcs
-      - name: Install WordPress Coding Standards
-        run: composer global require wp-coding-standards/wpcs
+          tools: composer
+
+      - name: Allow Composer Plugins
+        run: composer config --global allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist
+
       - name: Run PHPCS
-        run: phpcs --standard=WordPress ./
+        run: vendor/bin/phpcs --standard=WordPress ./
