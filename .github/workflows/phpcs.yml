@@ -19,14 +19,14 @@ jobs:
       - name: Set Up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.0'
           tools: composer
 
       - name: Allow Composer Plugins
         run: composer config --global allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
 
-      - name: Install Dependencies
+      - name: Install Composer Dependencies
         run: composer install --no-interaction --prefer-dist
 
-      - name: Run PHPCS
-        run: vendor/bin/phpcs --standard=WordPress ./
+      - name: Run PHPCS (Excluding vendor/)
+        run: vendor/bin/phpcs --standard=WordPress --ignore=vendor/* ./
