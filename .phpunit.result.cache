@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"MathTest::test_addition":0.0050000000000000001,"MathTest::test_subtraction":0}}
+{"version":1,"defects":{"MathTest::test_subtraction":7},"times":{"MathTest::test_addition":0.0070000000000000001,"MathTest::test_subtraction":0.012999999999999999}}
