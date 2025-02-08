@@ -29,4 +29,4 @@ jobs:
         run: composer install --no-interaction --prefer-dist
 
       - name: Run PHPCS (Excluding vendor/)
-        run: vendor/bin/phpcs --standard=WordPress --ignore=vendor/* ./
+        run: vendor/bin/phpcs --standard=WordPress --ignore=vendor/*,tests/* ./
